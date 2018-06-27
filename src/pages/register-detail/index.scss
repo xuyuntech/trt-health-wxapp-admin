@@ -1,0 +1,21 @@
+
+@import 'share';
+
+.pic-list {
+	.pic-item{
+		display: inline-block;
+		vertical-align: top;
+		margin: 5px;
+		width: 60px;
+		height: 60px;
+		image {
+			width: 60px;
+			height: 60px;
+		}
+	}
+	.pic-add{
+		text-align: center;
+		line-height: 60px;
+		border: 1px solid #dddee1;
+	}
+}

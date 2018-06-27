@@ -1,0 +1,71 @@
+<wxs module="tools">
+module.exports = {
+    cls: function(item, selectedDate){
+        var cls = [];
+        if (item.preMonth || item.nextMonth) {
+            cls.push('pre-month');
+        }
+        if (selectedDate == item.format) {
+            cls.push('selected');
+        }
+        return cls.join(' ');
+    },
+};
+</wxs>
+<view class="container">
+  <view class="whitespace"></view>
+  <view class="x-calendar">
+      <view class="x-calendar-head">
+          <view style="padding: 0 10px;" bindtap="preMonth"><i-icon type="return" size="28" color="#80848f" /></view>
+          <view class="x-calendar-title">{{props.store.selectedDate}}</view>
+          <view style="padding: 0 10px;" bindtap="nextMonth"><i-icon type="enter" size="28" color="#80848f" /></view>
+      </view>
+      <view class="x-calendar-body">
+        <view class="x-calendar-day">
+            <view class="x-calendar-day-item"><text>日</text></view>
+            <view class="x-calendar-day-item"><text>一</text></view>
+            <view class="x-calendar-day-item"><text>二</text></view>
+            <view class="x-calendar-day-item"><text>三</text></view>
+            <view class="x-calendar-day-item"><text>四</text></view>
+            <view class="x-calendar-day-item"><text>五</text></view>
+            <view class="x-calendar-day-item"><text>六</text></view>
+        </view>
+        <view class="x-calendar-date">
+            <view class="x-calendar-date-line" wx:key="index" wx:for="{{props.store.daysInMonth}}">
+                <view bindtap="selectDay" data-day="{{item.format}}" class="x-calendar-date-item" wx:key="index" wx:for="{{item}}">
+                    <text class="{{tools.cls(item, props.store.selectedDate)}}">{{item.dayStr}}</text>
+                </view>
+            </view>
+        </view>
+      </view>
+  </view>
+  <i-button bind:click="addArrangement" type="ghost">
+    <i-icon type="add" size="24" color="#80848f" />添加排班记录</i-button>
+  <view class="whitespace"></view>
+  <view class="arrangement-items">
+    <view style="text-align: center;color: #999;margin-bottom: 5px;">{{props.store.selectedDate}} 排班信息如下</view>
+    <i-card title="河东路店" full>
+        <view slot="content">
+            <view>上午，张三, ¥80.00</view>
+            <view>上午，张三, ¥80.00</view>
+            <view>上午，张三, ¥80.00</view>
+        </view>
+    </i-card>
+    <view class="whitespace"></view>
+    <i-card title="河东路店" full>
+        <view slot="content">
+            <view>上午，张三, ¥80.00</view>
+            <view>上午，张三, ¥80.00</view>
+            <view>上午，张三, ¥80.00</view>
+        </view>
+    </i-card>
+    <view class="whitespace"></view>
+  </view>
+  <i-modal i-class="c-modal" title="标题" show-ok="false" show-cancel="false" visible="{{ props.store.modalShow }}" bind:ok="submitModal" bind:cancel="cancelModal">
+    <i-cell-group>
+        <i-cell title="只显示箭头" is-link></i-cell>
+        <i-cell title="跳转到首页" is-link url="/pages/dashboard/index"></i-cell>
+        <i-cell title="只有 footer 点击有效" is-link url="/pages/dashboard/index" only-tap-footer></i-cell>
+    </i-cell-group>
+  </i-modal>
+</view>

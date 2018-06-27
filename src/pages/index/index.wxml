@@ -1,0 +1,32 @@
+<view class="container">
+  <i-grid i-class="funcs-grid">
+    <i-row>
+      <i-grid-item i-class="funcs-item" data-key="ARRANGEMENT" bindtap="openFunc">
+          <i-grid-icon i-class="funcs-item-icon">
+              <image src="../../images/face.png" />
+          </i-grid-icon>
+          <i-grid-label>排班管理</i-grid-label>
+      </i-grid-item>
+      <i-grid-item i-class="funcs-item" data-key="REGISTER_HISTORY" bindtap="openFunc">
+          <i-grid-icon i-class="funcs-item-icon">
+              <image src="../../images/face.png" />
+          </i-grid-icon>
+          <i-grid-label>挂号管理</i-grid-label>
+      </i-grid-item>
+      <i-grid-item i-class="funcs-item" data-key="DOCTOR" bindtap="openFunc">
+          <i-grid-icon i-class="funcs-item-icon">
+              <image src="../../images/face.png" />
+          </i-grid-icon>
+          <i-grid-label>医师管理</i-grid-label>
+      </i-grid-item>
+    </i-row>
+    <i-row>
+      <i-grid-item i-class="funcs-item" data-key="HOSPITAL" bindtap="openFunc">
+        <i-grid-icon i-class="funcs-item-icon">
+            <image src="../../images/face.png" />
+        </i-grid-icon>
+        <i-grid-label>门店管理</i-grid-label>
+      </i-grid-item>
+    </i-row>
+  </i-grid>
+</view>

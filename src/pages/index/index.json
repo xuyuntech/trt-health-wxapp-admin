@@ -1,0 +1,10 @@
+
+{
+  "usingComponents": {
+    "i-grid": "../../iview/grid/index",
+    "i-grid-item": "../../iview/grid-item/index",
+    "i-row": "../../iview/row/index",
+    "i-grid-icon": "../../iview/grid-icon/index",
+    "i-grid-label": "../../iview/grid-label/index"
+  }
+}

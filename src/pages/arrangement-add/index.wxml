@@ -1,0 +1,30 @@
+<view class="container">
+  <view class="whitespace"></view>
+  <i-cell-group>
+    <picker mode="date" value="{{props.store.visitDate}}" start="{{props.store.today}}" end="{{props.store.maxDay}}" bindchange="visitDateChange">
+        <i-cell is-link value="{{props.store.visitDate}}">
+            <view class="picker">
+            选择日期: 
+            </view>
+        </i-cell>
+    </picker>
+    <picker bindchange="hospitalChange" range-key="name" value="{{props.store.hospitalIndex}}" range="{{props.store.hospitals}}">
+        <i-cell is-link value="{{props.store.hospitals[props.store.hospitalIndex].name}}">
+            <view class="picker">
+                选择门店
+            </view>
+        </i-cell>
+    </picker>
+    <picker bindchange="doctorChange" range-key="name" value="{{props.store.doctorIndex}}" range="{{props.store.doctors}}">
+        <i-cell is-link value="{{props.store.doctors[props.store.doctorIndex].name}}">
+            <view class="picker">
+                选择医师
+            </view>
+        </i-cell>
+    </picker>
+    <i-cell title="选择出诊时间" bind:click="showVisitTime" value="{{props.store.visitTimeLabel}}" is-link></i-cell>
+  </i-cell-group>
+  <i-button bind:click="submit" type="primary" size="default">提交</i-button>
+  <i-action-sheet visible="{{ props.store.visitTimeShow }}" actions="{{ [{name:'上午'},{name:'下午'}] }}" show-cancel bind:cancel="cancelVisitTime" bind:click="handleVisitTime">
+  </i-action-sheet>
+</view>
