@@ -1,10 +1,16 @@
 import moment from 'moment';
 import _chunk from 'lodash.chunk';
+import { request } from '../../utils';
+import {API} from '../../const';
 
 var extendObservable = require('../../libs/mobx').extendObservable;
 
+const app = getApp();
+
 var TodoStore = function () {
 	extendObservable(this, {
+		arrangementHistories: [],
+
 		selectedDate: moment().format('YYYY-MM-DD'),
 		get daysInMonth() {
 			const sd = moment(this.selectedDate);
@@ -47,13 +53,20 @@ var TodoStore = function () {
 		},
 	});
 
-	// action
-	this.addTodo = function (title) {
-		this.todos.push({title: title});
-	};
-
-	this.removeTodo = function () {
-		this.todos.pop();
+	this.queryByVisitDate = async function (visitDate) {
+		try {
+			const res = await request({
+				url: API.ArrangementHistory.Query(),
+				data: {
+					f: 'true',
+					visitDate,
+				},
+			});
+			this.arrangementHistories = res.results || [];
+		}
+		catch (err) {
+			app.error(err);
+		}
 	};
 };
 

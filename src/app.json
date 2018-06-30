@@ -1,10 +1,15 @@
 {
   "pages":[
-    "pages/index/index",
-    "pages/register-detail/index",
-    "pages/register-history/index",
     "pages/arrangement/index",
-    "pages/arrangement-add/index"
+    "pages/arrangement-add/index",
+    "pages/doctors/index",
+    "pages/doctors-add/index",
+    "pages/index/index",
+    "pages/hospitals/index",
+    "pages/hospitals-add/index",
+    "pages/login/index",
+    "pages/register-detail/index",
+    "pages/register-history/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

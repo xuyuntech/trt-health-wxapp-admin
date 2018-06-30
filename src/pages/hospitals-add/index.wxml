@@ -1,0 +1,26 @@
+<view class="container">
+    <i-panel title="添加门店">
+        <view class="input-group">
+            <view class="input-wrapper">
+                <text class="input-label">名称</text>
+                <input value="{{ props.store.name }}" data-name="name" bindinput="valueChange" autofocus placeholder="输入名称" />
+            </view>
+            <view class="input-wrapper">
+                <text class="input-label">地址</text>
+                <input value="{{ props.store.address }}" data-name="address" bindinput="valueChange" autofocus placeholder="输入地址" />
+            </view>
+            <view class="input-wrapper">
+                <text class="input-label">电话</text>
+                <input value="{{ props.store.phone }}" data-name="phone" bindinput="valueChange" autofocus placeholder="输入电话" />
+            </view>
+            <view class="headImgs">
+                <view class="">头图</view>
+                <view class="pic-list">
+                    <view class="pic-item"><image src="http://via.placeholder.com/50x50"/></view>
+                    <view class="pic-item pic-add"><i-icon type="add" size="28" color="#80848f" /></view>
+                </view>
+            </view>
+        </view>
+    </i-panel>
+    <button class="btn btn-primary" style="margin: 10px;" bindtap="save">保存</button>
+</view>

@@ -1,6 +1,5 @@
 import { observer } from '../../libs/observer';
 import store from './store';
-import {FUNCS} from '../../const';
 
 const delay = (t = 0) => new Promise((resolve) => setTimeout(resolve, t));
 
@@ -29,15 +28,18 @@ Page(observer(
 		hospitalChange({detail: {value}}) {
 			store.hospitalIndex = value;
 		},
-		submit(e) {
-			console.log(e);
-			const { visitTimeIndex, hospitalIndex, doctorIndex, visitDate } = store;
-			console.log({visitTimeIndex, hospitalIndex, doctorIndex, visitDate});
+		descriptionChange({detail: {detail: {value}}}) {
+			store.description = value;
+		},
+		async submit(e) {
+			await store.submit();
 		},
 		async onLoad(options) {
 			await delay();
 			const { selectedDate } = options;
 			store.selectedDate = selectedDate;
+			await store.loadDoctors();
+			await store.loadHospitals();
 		},
 	},
 ));

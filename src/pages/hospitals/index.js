@@ -1,7 +1,6 @@
 import { observer } from '../../libs/observer';
 import store from './store';
 import { request } from '../../utils';
-import {API} from '../../const';
 
 const delay = (t = 0) => new Promise((resolve) => setTimeout(resolve, t));
 
@@ -14,27 +13,21 @@ Page(observer(
 		},
 		openAddPage() {
 			wx.navigateTo({
-				url: '/pages/doctors-add/index',
+				url: '/pages/hospitals-add/index',
 			});
 		},
-		onPullDownRefresh() {
-			this.load();
-		},
-		async load() {
+		async onShow() {
+			await delay();
 			try {
 				const data = await request({
-					url: API.Doctor.Query(),
+					url: 'http://localhost:3002/hospitals',
 				});
 				console.log(data);
-				store.doctors = (data.results || []).map((item) => ({...item, link: `/pages/doctors-add/index?id=${item.name}&editMode=true`}));
+				store.hospitals = (data.results || []).map((item) => ({...item, link: `/pages/hospitals-add/index?id=${item.id}&editMode=true`}));
 			}
 			catch (err) {
 				console.error(err);
 			}
-		},
-		async onLoad(options) {
-			await delay();
-			this.load();
 		},
 	},
 ));

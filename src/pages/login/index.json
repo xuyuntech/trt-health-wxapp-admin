@@ -1,0 +1,10 @@
+
+{
+  "usingComponents": {
+    "i-panel": "../../iview/panel/index",
+    "i-button": "../../iview/button/index",
+    "i-toast": "../../iview/toast/index",
+    "i-icon": "../../iview/icon/index",
+    "i-input": "../../iview/input/index"
+  }
+}

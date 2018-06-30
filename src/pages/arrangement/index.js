@@ -35,11 +35,12 @@ Page(observer(
 		nextMonth() {
 			store.selectedDate = moment(store.selectedDate).add(1, 'months').format('YYYY-MM-DD');
 		},
-		selectDay({currentTarget: {dataset: {day}}}) {
+		async selectDay({currentTarget: {dataset: {day}}}) {
 			if (!day) {
 				return;
 			}
 			store.selectedDate = day;
+			await store.queryByVisitDate(day);
 		},
 		async onLoad() {
 			await delay();

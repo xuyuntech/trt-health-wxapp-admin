@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents":
+  {
+    "i-action-sheet": "../../iview/action-sheet/index",
+    "i-cell": "../../iview/cell/index"
+  }
+}

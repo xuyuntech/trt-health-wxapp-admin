@@ -1,0 +1,5 @@
+<view class="c-select">
+<i-cell title="{{title}}" is-link value="{{value}}" bind:click="show"></i-cell>
+</view>
+<i-action-sheet visible="{{ isShow }}" actions="{{ actions }}" show-cancel bind:cancel="hide" bind:click="ok" mask-closable="{{ true }}">
+</i-action-sheet>

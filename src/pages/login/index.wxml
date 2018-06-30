@@ -1,0 +1,27 @@
+<view class="container">
+  <view class="title">
+    <view class="fs-large">在线智能问诊</view>
+    <view class="clr-sub" style="margin-top: 10px;">管理端</view>
+  </view>
+  <form bindsubmit="submit">
+      <view class="form">
+          <view class="input-wrapper1">
+            <i-icon type="mine" size="24" color="#80848f" />
+            <!-- <input value="{{ props.store.username }}" name="username" bindinput="usernameChange" autofocus placeholder="用户名" /> -->
+            <input name="username" autofocus value="{{props.store.username}}" placeholder="用户名" />
+          </view>
+          <view class="input-wrapper1">
+            <i-icon type="mine" size="24" color="#80848f" />
+            <!-- <input value="{{ props.store.password }}" name="password" bindinput="passwordChange" type="password" placeholder="密码" /> -->
+            <input name="password" type="password" value="{{ props.store.password }}" placeholder="密码" />
+          </view>
+          <view style="margin-top: 15px;">
+            <button class="btn btn-primary" formType="submit">登录</button>
+            <view class="text-right" style="margin-top: 15px;">
+              <text class="clr-light-primary">忘记密码?</text>
+            </view>
+          </view>
+        </view>
+  </form>
+  <i-toast id="toast" />
+</view>
