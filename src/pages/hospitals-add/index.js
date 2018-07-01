@@ -64,7 +64,7 @@ Page(observer(
 		},
 		async onLoad(options) {
 			await delay();
-			store.clear();
+			// store.clear();
 			const { id, editMode } = options;
 			store.editMode = editMode;
 			store.id = id;

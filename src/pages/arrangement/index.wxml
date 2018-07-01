@@ -44,22 +44,16 @@ module.exports = {
   <view class="whitespace"></view>
   <view class="arrangement-items">
     <view style="text-align: center;color: #999;margin-bottom: 5px;">{{props.store.selectedDate}} 排班信息如下</view>
-    <i-card title="河东路店" full>
-        <view slot="content">
-            <view>上午，张三, ¥80.00</view>
-            <view>上午，张三, ¥80.00</view>
-            <view>上午，张三, ¥80.00</view>
-        </view>
-    </i-card>
-    <view class="whitespace"></view>
-    <i-card title="河东路店" full>
-        <view slot="content">
-            <view>上午，张三, ¥80.00</view>
-            <view>上午，张三, ¥80.00</view>
-            <view>上午，张三, ¥80.00</view>
-        </view>
-    </i-card>
-    <view class="whitespace"></view>
+    <view  wx:key="{{item.hospital.name}}" wx:for="{{props.store.arrangementHistories}}">
+        <i-card title="{{item.hospital.name}}" full>
+            <view slot="content">
+                <view wx:key="id" wx:for="{{item.arrangementHistories}}">
+                    {{item.doctor.realName}}, {{item.visitDate}} {{item.visitTime}}, {{item.price}}
+                </view>
+            </view>
+        </i-card>
+        <view class="whitespace"></view>
+    </view>
   </view>
   <i-modal i-class="c-modal" title="标题" show-ok="false" show-cancel="false" visible="{{ props.store.modalShow }}" bind:ok="submitModal" bind:cancel="cancelModal">
     <i-cell-group>

@@ -1,6 +1,7 @@
 import { observer } from '../../libs/observer';
 import store from './store';
 import { request } from '../../utils';
+import { API } from '../../const';
 
 const delay = (t = 0) => new Promise((resolve) => setTimeout(resolve, t));
 
@@ -20,7 +21,7 @@ Page(observer(
 			await delay();
 			try {
 				const data = await request({
-					url: 'http://localhost:3002/hospitals',
+					url: API.Hospitals.Query(),
 				});
 				console.log(data);
 				store.hospitals = (data.results || []).map((item) => ({...item, link: `/pages/hospitals-add/index?id=${item.id}&editMode=true`}));

@@ -1,5 +1,8 @@
 <view class="container">
     <i-cell-group class="list">
+        <view class="help-text" wx:if="{{props.store.doctors.length == 0}}">
+            暂无数据
+        </view>
         <i-cell wx:key="id" wx:for="{{props.store.doctors}}" is-link url="{{item.link}}">
             <view class="list-item">
                 <image src="http://via.placeholder.com/50x50" style="width:50px;height:50px;min-width:50px;"/>

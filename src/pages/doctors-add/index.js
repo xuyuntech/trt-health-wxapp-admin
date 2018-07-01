@@ -13,7 +13,6 @@ Page(observer(
 			store,
 		},
 		valueChange({detail: {detail}, currentTarget}) {
-			console.log('value', value);
 			const { value } = detail;
 			const { dataset } = currentTarget;
 			store[dataset['name']] = value;
@@ -76,7 +75,7 @@ Page(observer(
 		},
 		async onLoad(options) {
 			await delay();
-			store.clear();
+			// store.clear();
 			const { id, editMode } = options;
 			store.editMode = editMode;
 			store.id = id;

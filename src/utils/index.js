@@ -42,6 +42,9 @@ export async function request({url, headers, method = 'GET', data}) {
 					};
 					reject(err);
 				}
+				else if (data.status === 401) {
+					app.login();
+				}
 				else if (data.status !== 0) {
 					reject(data);
 				}

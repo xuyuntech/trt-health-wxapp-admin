@@ -25,10 +25,10 @@ export const API = {
 		Query: () => `${BASE_URL}/arrangement_history/`,
 	},
 	Hospitals: {
-		Query: () => `${BASE_URL}/hospitals`,
-		Update: () => `${BASE_URL}/hospitals`,
-		Create: () => `${BASE_URL}/hospitals`,
-		FindByID: (id) => `${BASE_URL}/hospitals/${id}`,
+		Query: () => `${BASE_URL}/hospital`,
+		Update: () => `${BASE_URL}/hospital`,
+		Create: () => `${BASE_URL}/hospital`,
+		FindByID: (id) => `${BASE_URL}/hospital/${id}`,
 	},
 	Doctor: {
 		Query: () => `${BASE_URL}/doctor`,

@@ -22,6 +22,9 @@ Page(observer(
 		visitDateChange({detail: {value}}) {
 			store.visitDate = value;
 		},
+		feeChange({detail: {detail: {value}}}) {
+			store.fee = value;
+		},
 		doctorChange({detail: {value}}) {
 			store.doctorIndex = value;
 		},

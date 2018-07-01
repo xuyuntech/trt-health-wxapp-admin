@@ -52,6 +52,7 @@ Page(observer(
 			});
 
 			log();
+			await store.queryByVisitDate();
 		},
 	},
 ));

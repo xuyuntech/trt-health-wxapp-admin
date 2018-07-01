@@ -1,6 +1,13 @@
 
 $padding: 200rpx;
 $color-primary: #2d8cf0;
+$color-sub: #80848f;
+
+.help-text {
+	text-align: center;
+	color: $color-sub;
+	margin: 10px 0;
+}
 
 .container {
 	&.has-footer{

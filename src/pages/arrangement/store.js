@@ -54,6 +54,9 @@ var TodoStore = function () {
 	});
 
 	this.queryByVisitDate = async function (visitDate) {
+		if (!visitDate) {
+			visitDate = moment().format('YYYY-MM-DD');
+		}
 		try {
 			const res = await request({
 				url: API.ArrangementHistory.Query(),
@@ -62,7 +65,22 @@ var TodoStore = function () {
 					visitDate,
 				},
 			});
-			this.arrangementHistories = res.results || [];
+			const results = res.results || [];
+			const m = {};
+			results.forEach((item) => {
+				if (!m[item.hospital.name]) {
+					m[item.hospital.name] = {
+						hospital: item.hospital,
+						arrangementHistories: [],
+					};
+				}
+				m[item.hospital.name].arrangementHistories.push({
+					...item,
+					visitDate: moment(visitDate).format('YYYY-MM-DD'),
+					visitTime: item.visitTime === 'AM' ? '上午' : '下午',
+				});
+			});
+			this.arrangementHistories = Object.keys(m).map((key) => ({...m[key]}));
 		}
 		catch (err) {
 			app.error(err);

@@ -23,6 +23,7 @@
         </i-cell>
     </picker>
     <i-cell title="选择出诊时间" bind:click="showVisitTime" value="{{props.store.visitTimeLabel}}" is-link></i-cell>
+    <i-input title="挂号费" type="number" bind:change="feeChange" value="{{props.store.fee}}" placeholder="输入挂号费"></i-input>
     <i-input type="textarea" title="描述" bind:change="descriptionChange" value="{{props.store.description}}" placeholder="排班描述(最多100字)"></i-input>
   </i-cell-group>
   <i-button bind:click="submit" type="primary" size="default">提交</i-button>

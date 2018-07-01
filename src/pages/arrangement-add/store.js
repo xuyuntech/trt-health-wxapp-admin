@@ -28,6 +28,7 @@ class Store {
 			visitTimeIndex: -1,
 			hospitalIndex: -1,
 			doctorIndex: -1,
+			fee: '',
 			visitDate: this.today,
 			description: '',
 			visitTimeShow: false,
@@ -38,7 +39,8 @@ class Store {
 
 	}
 	async submit() {
-		const { visitTimeLabel, hospitalIndex, doctorIndex, visitDate, description } = this;
+		const { visitTimeLabel, hospitalIndex, doctorIndex,
+			visitDate, description, fee } = this;
 		if (hospitalIndex < 0) {
 			return wx.showToast({title: '请选择门店', icon: 'none'});
 		}
@@ -48,11 +50,15 @@ class Store {
 		if (visitTimeLabel !== '上午' && visitTimeLabel !== '下午') {
 			return wx.showToast({title: '请选择出诊时间', icon: 'none'});
 		}
+		if (isNaN(fee)) {
+			return wx.showToast({title: '请填写挂号费', icon: 'none'});
+		}
 		const data = {
 			visitTime: visitTimeLabel === '上午' ? 'AM' : 'PM',
 			hospital: this.hospitals[hospitalIndex].id,
 			doctor: this.doctors[doctorIndex].name,
 			visitDate: new Date(visitDate).toISOString(),
+			fee,
 			description,
 		};
 		console.log('data', data);
