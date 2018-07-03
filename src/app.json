@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/department/index",
     "pages/arrangement/index",
     "pages/arrangement-add/index",
     "pages/doctors/index",

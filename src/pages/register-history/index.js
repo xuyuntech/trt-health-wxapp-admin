@@ -43,6 +43,7 @@ Page(observer(
 			await delay();
 			const { selectedDate } = options;
 			store.selectedDate = selectedDate;
+			await store.reload();
 		},
 	},
 ));

@@ -48,7 +48,7 @@ module.exports = {
         <i-card title="{{item.hospital.name}}" full>
             <view slot="content">
                 <view wx:key="id" wx:for="{{item.arrangementHistories}}">
-                    {{item.doctor.realName}}, {{item.visitDate}} {{item.visitTime}}, {{item.price}}
+                    {{item.doctor.realName}}, {{item.visitDate}} {{item.visitTime}}, ¥{{item.fee}}, {{item.department1.name}}-{{item.department2.name}}
                 </view>
             </view>
         </i-card>

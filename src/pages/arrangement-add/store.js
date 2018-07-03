@@ -28,7 +28,8 @@ class Store {
 			visitTimeIndex: -1,
 			hospitalIndex: -1,
 			doctorIndex: -1,
-			fee: '',
+			fee: '10',
+			selectedDepartment: null,
 			visitDate: this.today,
 			description: '',
 			visitTimeShow: false,
@@ -41,6 +42,12 @@ class Store {
 	async submit() {
 		const { visitTimeLabel, hospitalIndex, doctorIndex,
 			visitDate, description, fee } = this;
+		console.log({visitTimeLabel,
+			hospitalIndex,
+			doctorIndex,
+			visitDate,
+			description,
+			fee });
 		if (hospitalIndex < 0) {
 			return wx.showToast({title: '请选择门店', icon: 'none'});
 		}
@@ -56,7 +63,9 @@ class Store {
 		const data = {
 			visitTime: visitTimeLabel === '上午' ? 'AM' : 'PM',
 			hospital: this.hospitals[hospitalIndex].id,
-			doctor: this.doctors[doctorIndex].name,
+			doctor: this.selectedDepartment.department2.doctors[doctorIndex].name,
+			department1: this.selectedDepartment.department1.id,
+			department2: this.selectedDepartment.department2.id,
 			visitDate: new Date(visitDate).toISOString(),
 			fee,
 			description,

@@ -1,5 +1,6 @@
 
 {
+  "navigationBarTitleText":"登录",
   "usingComponents": {
     "i-panel": "../../iview/panel/index",
     "i-button": "../../iview/button/index",

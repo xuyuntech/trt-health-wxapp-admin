@@ -1,5 +1,6 @@
 
 {
+  "navigationBarTitleText":"添加医院",
   "usingComponents": {
     "i-panel": "../../iview/panel/index",
     "i-input": "../../iview/input/index",

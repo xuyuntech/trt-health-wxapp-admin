@@ -14,7 +14,7 @@ export const REGISTER_STATE = {
 	Finished: '已开处方',
 };
 
-const BASE_URL = 'http://192.168.1.186:3002';
+const BASE_URL = 'http://192.168.1.106:3002';
 
 export const API = {
 	Users: {
@@ -22,7 +22,14 @@ export const API = {
 	},
 	ArrangementHistory: {
 		Create: () => `${BASE_URL}/arrangement_history`,
-		Query: () => `${BASE_URL}/arrangement_history/`,
+		Query: () => `${BASE_URL}/arrangement_history`,
+		QueryAll: () => `${BASE_URL}/arrangement_history/all`,
+	},
+	RegisterHistory: {
+		Query: () => `${BASE_URL}/register_history`,
+	},
+	Department1: {
+		Query: () => `${BASE_URL}/department1`,
 	},
 	Hospitals: {
 		Query: () => `${BASE_URL}/hospital`,

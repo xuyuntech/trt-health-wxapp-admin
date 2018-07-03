@@ -1,5 +1,6 @@
 
 {
+  "navigationBarTitleText":"排班管理",
   "usingComponents": {
     "i-row": "../../iview/row/index",
     "i-col": "../../iview/col/index",

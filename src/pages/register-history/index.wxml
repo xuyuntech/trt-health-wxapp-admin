@@ -34,17 +34,19 @@
         </view>
         <view data-id="{{item.id}}" bindtap="openDetail" wx:for="{{props.store.registerItems}}" class="card">
             <view class="card-header">
-                <view class="card-title">{{item.visitDate}} {{item.visitTime == 'am'?'上午':'下午'}}</view>
-                <view class="card-actions">{{item.state}}</view>
+                <view class="card-title">{{item.arrangementHistory.visitDateTime}}</view>
+                <view class="card-actions">{{item.stateStr}}</view>
             </view>
             <view class="card-body">
                 <view class="detail-info">
                     <view style="flex:1;">
-                        <view class="mb-3"><text class="font-bold">{{item.patient.name}}</text> <text class="ml-5">{{item.patient.gender == 'MALE'?'男':'女'}} {{item.patient.phone}}</text></view>
-                        <view class="mb-3"><text>{{item.patient.sid}}</text></view>
+                        <view class="mb-3"><text class="font-bold">{{item.visitor.realName}}</text> <text class="ml-5">{{item.visitor.genderStr}} {{item.visitor.phone}}</text></view>
+                        <view class="mb-3"><text>{{item.visitor.sid}}</text></view>
                         <view class="mb-3">
-                            <text class="clr-sub">门店: </text><text>{{item.hospital.name}}</text>
-                            <text class="ml-5"><text class="clr-sub">医师:</text> {{item.doctor.name}}</text>
+                            <text class="clr-sub">门店: </text><text>{{item.arrangementHistory.hospital.name}}</text>
+                        </view>
+                        <view class="mb-3">
+                            <text class="clr-sub">医师:</text> {{item.arrangementHistory.doctor.realName}}
                         </view>
                     </view>
                     <view>

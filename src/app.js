@@ -30,6 +30,11 @@ App({
 		// 	},
 		// });
 	},
+	getPrevPage() {
+		const routers = getCurrentPages(); // eslint-disable-line
+		const prevPage = routers[routers.length - 2];
+		return prevPage;
+	},
 	setRequestHeaderToStorage({accessToken, userID, userInfo}) {
 		wx.setStorageSync('access_token', accessToken);
 		wx.setStorageSync('user_id', userID);

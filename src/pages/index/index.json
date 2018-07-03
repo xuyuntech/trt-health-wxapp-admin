@@ -1,5 +1,6 @@
 
 {
+  "navigationBarTitleText":"在线智能问诊-管理端",
   "usingComponents": {
     "i-grid": "../../iview/grid/index",
     "i-grid-item": "../../iview/grid-item/index",

@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container has-footer">
     <view class="panel">
         <view class="panel-header">
             挂号单信息
@@ -85,6 +85,8 @@
             </view>
         </view>
     </view>
-    <i-button bind:click="submit" type="primary" size="default">保存</i-button>
-    <view class="whitespace"></view>
+    <view class="footer">
+        <button bindtap="submit" class="btn btn-primary">保存</button>
+        <button bindtap="submit" class="btn btn-danger">核销</button>
+    </view>
 </view>

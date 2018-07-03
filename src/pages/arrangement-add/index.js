@@ -23,7 +23,16 @@ Page(observer(
 			store.visitDate = value;
 		},
 		feeChange({detail: {detail: {value}}}) {
+			console.log('>>>', value);
 			store.fee = value;
+		},
+		selectDepartment() {
+			if (store.hospitalIndex < 0) {
+				return wx.showToast({title: '必须先选择医院', icon: 'none'});
+			}
+			wx.navigateTo({
+				url: `/pages/department/index?hospital=${store.hospitals[store.hospitalIndex].id}`,
+			});
 		},
 		doctorChange({detail: {value}}) {
 			store.doctorIndex = value;
@@ -41,7 +50,7 @@ Page(observer(
 			await delay();
 			const { selectedDate } = options;
 			store.selectedDate = selectedDate;
-			await store.loadDoctors();
+			// await store.loadDoctors();
 			await store.loadHospitals();
 		},
 	},

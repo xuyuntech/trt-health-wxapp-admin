@@ -59,9 +59,8 @@ var TodoStore = function () {
 		}
 		try {
 			const res = await request({
-				url: API.ArrangementHistory.Query(),
+				url: API.ArrangementHistory.QueryAll(),
 				data: {
-					f: 'true',
 					visitDate,
 				},
 			});
