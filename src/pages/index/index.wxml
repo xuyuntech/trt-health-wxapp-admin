@@ -3,35 +3,35 @@
     <i-row>
       <i-grid-item i-class="funcs-item" data-key="ARRANGEMENT" bindtap="openFunc">
           <i-grid-icon i-class="funcs-item-icon">
-              <image src="../../images/face.png" />
+              <image src="../../images/icons/arrangement.png" />
           </i-grid-icon>
-          <i-grid-label>排班管理</i-grid-label>
+          <i-grid-label><text class="label fs-small">排班管理</text></i-grid-label>
       </i-grid-item>
       <i-grid-item i-class="funcs-item" data-key="REGISTER_HISTORY" bindtap="openFunc">
           <i-grid-icon i-class="funcs-item-icon">
-              <image src="../../images/face.png" />
+              <image src="../../images/icons/guahao.png" />
           </i-grid-icon>
-          <i-grid-label>挂号管理</i-grid-label>
+          <i-grid-label><text class="label fs-small">挂号管理</text></i-grid-label>
       </i-grid-item>
       <i-grid-item i-class="funcs-item" data-key="DOCTOR" bindtap="openFunc">
           <i-grid-icon i-class="funcs-item-icon">
-              <image src="../../images/face.png" />
+              <image src="../../images/icons/doctorMgr.png" />
           </i-grid-icon>
-          <i-grid-label>医师管理</i-grid-label>
+          <i-grid-label><text class="label fs-small">医师管理</text></i-grid-label>
       </i-grid-item>
     </i-row>
     <i-row>
       <i-grid-item i-class="funcs-item" data-key="HOSPITAL" bindtap="openFunc">
         <i-grid-icon i-class="funcs-item-icon">
-            <image src="../../images/face.png" />
+            <image src="../../images/icons/hospital.png" style="width: 44px !important;height:40px !important;" />
         </i-grid-icon>
-        <i-grid-label>医院管理</i-grid-label>
+        <i-grid-label><text class="label fs-small">医院管理</text></i-grid-label>
       </i-grid-item>
       <i-grid-item i-class="funcs-item" data-key="ADMIN" bindtap="openFunc">
         <i-grid-icon i-class="funcs-item-icon">
-            <image src="../../images/face.png" />
+            <image src="../../images/icons/admin.png" />
         </i-grid-icon>
-        <i-grid-label>管理员管理</i-grid-label>
+        <i-grid-label><text class="label fs-small">管理员管理</text></i-grid-label>
       </i-grid-item>
     </i-row>
   </i-grid>

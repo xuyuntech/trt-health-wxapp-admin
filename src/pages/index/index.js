@@ -15,7 +15,7 @@ Page(observer(
 		openFunc({currentTarget: {dataset}}) {
 			const url = FUNCS[dataset['key']];
 			if (!url) {
-				wx.showToast({title: '此功能还未开放'});
+				wx.showToast({title: '此功能还未开放', icon: 'none'});
 				return;
 			}
 			wx.navigateTo({
