@@ -1,5 +1,7 @@
 import { observer } from '../../libs/observer';
 import store from './store';
+import { request } from '../../utils';
+import { API } from '../../const';
 
 const delay = (t = 0) => new Promise((resolve) => setTimeout(resolve, t));
 
@@ -28,6 +30,40 @@ Page(observer(
 		hospitalChange({detail: {value}}) {
 			store.hospitalIndex = value;
 		},
+		verifyAction() {
+			wx.showModal({
+				title: '提示',
+				content: '确定核销该挂号单吗?',
+				async success(res) {
+					if (res.confirm) {
+						try {
+							await request({
+								url: API.VerifyRegisterAction.Verify(store.registerHistoryID),
+								method: 'PUT',
+							});
+							wx.showModal({
+								title: '操作成功',
+								content: '点击确定返回',
+								success(res) {
+									if (res.confirm) {
+										app.getPrevPage().props.store.reload();
+										wx.navigateBack();
+									}
+								},
+							});
+						}
+						catch (err) {
+							wx.showModal({
+								title: '操作失败',
+								content: `${err}`,
+								showCancel: false,
+							});
+						}
+					}
+				},
+			});
+
+		},
 		submit(e) {
 			console.log(e);
 			const { visitTimeIndex, hospitalIndex, doctorIndex, visitDate } = store;
@@ -35,8 +71,9 @@ Page(observer(
 		},
 		async onLoad(options) {
 			await delay();
-			const { selectedDate } = options;
-			store.selectedDate = selectedDate;
+			const { id } = options;
+			store.registerHistoryID = id;
+			store.load();
 		},
 	},
 ));

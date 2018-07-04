@@ -13,8 +13,13 @@ Page(observer(
 			store,
 		},
 		openFunc({currentTarget: {dataset}}) {
+			const url = FUNCS[dataset['key']];
+			if (!url) {
+				wx.showToast({title: '此功能还未开放'});
+				return;
+			}
 			wx.navigateTo({
-				url: FUNCS[dataset['key']],
+				url,
 			});
 		},
 		async onLoad() {

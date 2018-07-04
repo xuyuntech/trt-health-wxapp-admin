@@ -27,6 +27,12 @@
         </i-grid-icon>
         <i-grid-label>医院管理</i-grid-label>
       </i-grid-item>
+      <i-grid-item i-class="funcs-item" data-key="ADMIN" bindtap="openFunc">
+        <i-grid-icon i-class="funcs-item-icon">
+            <image src="../../images/face.png" />
+        </i-grid-icon>
+        <i-grid-label>管理员管理</i-grid-label>
+      </i-grid-item>
     </i-row>
   </i-grid>
 </view>

@@ -1,4 +1,5 @@
-<view class="container has-footer">
+<view wx:if="{{!props.store.registerHistory}}" class="help-text">加载中...</view>
+<view wx:else class="container has-footer">
     <view class="panel">
         <view class="panel-header">
             挂号单信息
@@ -7,15 +8,15 @@
             <view class="infoview">
                 <view class="info-line">
                     <view class="info-title">挂号单号:</view>
-                    <view class="info-text">8437489327489237497</view>
+                    <view class="info-text">{{props.store.registerHistory.id}}</view>
                 </view>
                 <view class="info-line">
                     <view class="info-title">就诊时间:</view>
-                    <view class="info-text">2018-12-12 上午</view>
+                    <view class="info-text">{{props.store.registerHistory.visitDateTime}}</view>
                 </view>
                 <view class="info-line">
                     <view class="info-title">就诊医院:</view>
-                    <view class="info-text">河东路店</view>
+                    <view class="info-text">{{props.store.registerHistory.id}}</view>
                 </view>
                 <view class="info-line">
                     <view class="info-title">医师:</view>
@@ -87,6 +88,8 @@
     </view>
     <view class="footer">
         <button bindtap="submit" class="btn btn-primary">保存</button>
-        <button bindtap="submit" class="btn btn-danger">核销</button>
+        <button wx:if="{{props.store.registerHistory.state === 'Register'}}" class="btn btn-danger" bindtap="verifyAction">核销</button>
+        <button wx:if="{{props.store.registerHistory.state === 'Visiting'}}" class="btn btn-success" bindtap="finishAction">完成</button>
+        <button wx:if="{{props.store.registerHistory.state === 'Finish'}}" class="btn" disabled>已完成</button>
     </view>
 </view>

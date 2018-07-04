@@ -15,6 +15,7 @@ var TodoStore = function () {
 	});
 	this.reload = async function () {
 		try {
+			this.registerItems = [];
 			const data = await request({
 				url: API.RegisterHistory.Query(),
 				data: {
