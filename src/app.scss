@@ -1,4 +1,3 @@
-
 $padding: 200rpx;
 $color-primary: #2d8cf0;
 $color-sub: #80848f;
@@ -13,7 +12,7 @@ $color-success: #19be6b;
 
 .container {
 	&.has-footer{
-		margin-bottom: 50px;
+		padding-bottom: 50px;
 	}
 	.footer {
 		display: flex;
@@ -371,3 +370,6 @@ page {
 		padding: 3px 6px;
 	}
 }
+
+@import "./styles/cell";
+@import "./styles/input";

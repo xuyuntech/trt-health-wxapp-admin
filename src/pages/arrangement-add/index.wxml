@@ -13,30 +13,103 @@ module.exports = {
   <view class="whitespace"></view>
   <i-cell-group>
     <picker mode="date" value="{{props.store.visitDate}}" start="{{props.store.today}}" end="{{props.store.maxDay}}" bindchange="visitDateChange">
-        <i-cell is-link value="{{props.store.visitDate}}">
-            <view class="picker">
-            选择日期: 
+        <view class="cell cell-access">
+            <view class="cell-bd">
+                <view class="cell-text">
+                    <view class="picker">
+                    选择日期
+                    </view>
+                </view>
             </view>
-        </i-cell>
+            <view class="cell-ft">
+                {{props.store.visitDate}}
+            </view>
+        </view>
     </picker>
     <picker bindchange="hospitalChange" range-key="name" value="{{props.store.hospitalIndex}}" range="{{props.store.hospitals}}">
-        <i-cell is-link value="{{props.store.hospitalIndex == -1?'请选择':props.store.hospitals[props.store.hospitalIndex].name}}">
-            <view class="picker">
-                选择医院
+        <view class="cell cell-access">
+            <view class="cell-bd">
+                <view class="cell-text">
+                    选择医院
+                </view>
             </view>
-        </i-cell>
+            <view class="cell-ft">
+                {{props.store.hospitalIndex == -1?'请选择':props.store.hospitals[props.store.hospitalIndex].name}}
+            </view>
+        </view>
     </picker>
-    <i-cell title="选择科室" bind:click="selectDepartment" is-link value="{{tools.getDepartmentTip(props.store.selectedDepartment)}}"></i-cell>
+    <view class="cell cell-access" bindtap="selectDepartment">
+        <view class="cell-bd">
+            <view class="cell-text">
+                选择科室
+            </view>
+        </view>
+        <view class="cell-ft">
+            {{tools.getDepartmentTip(props.store.selectedDepartment)}}
+        </view>
+    </view>
+    <!-- <i-cell title="选择科室" bind:click="selectDepartment" is-link value="{{tools.getDepartmentTip(props.store.selectedDepartment)}}"></i-cell> -->
     <picker bindchange="doctorChange" range-key="realName" value="{{props.store.doctorIndex}}" range="{{props.store.selectedDepartment.department2.doctors}}">
-        <i-cell is-link value="{{props.store.doctorIndex == -1?'请选择':props.store.selectedDepartment.department2.doctors[props.store.doctorIndex].realName}}">
+        <view class="cell cell-access">
+            <view class="cell-bd">
+                <view class="cell-text">
+                        选择医师
+                </view>
+            </view>
+            <view class="cell-ft">
+                {{props.store.doctorIndex == -1?'请选择':props.store.selectedDepartment.department2.doctors[props.store.doctorIndex].realName}}
+            </view>
+        </view>
+        <!-- <i-cell is-link value="{{props.store.doctorIndex == -1?'请选择':props.store.selectedDepartment.department2.doctors[props.store.doctorIndex].realName}}">
             <view class="picker">
                 选择医师
             </view>
-        </i-cell>
+        </i-cell> -->
     </picker>
-    <i-cell title="选择出诊时间" bind:click="showVisitTime" value="{{props.store.visitTimeLabel}}" is-link></i-cell>
-    <i-input title="挂号费" type="number" bind:change="feeChange" value="{{props.store.fee}}" placeholder="输入挂号费"></i-input>
-    <i-input type="textarea" title="描述" bind:change="descriptionChange" value="{{props.store.description}}" placeholder="排班描述(最多100字)"></i-input>
+    <view class="cell cell-access" bindtap="showVisitTime">
+        <view class="cell-bd">
+            <view class="cell-text">
+                选择出诊时间
+            </view>
+        </view>
+        <view class="cell-ft">
+            {{props.store.visitTimeLabel}}
+        </view>
+    </view>
+    <!-- <i-cell title="选择出诊时间" bind:click="showVisitTime" value="{{props.store.visitTimeLabel}}" is-link></i-cell> -->
+    
+    <view class="cell">
+        <view class="cell-hd input-title">
+            挂号费
+        </view>
+        <input
+            class="input-input cell-bd"
+            type="number"
+            bindinput="feeChange"
+            value="{{props.store.fee}}"
+            placeholder-class="input-placeholder"
+            placeholder="输入挂号费"
+        />
+    </view>
+    <view class="cell">
+        <view class="cell-hd input-title">
+            描述
+        </view>
+        <textarea
+            auto-height
+            maxlength="100"
+            class="input-input cell-bd"
+            type="number"
+            bindinput="descriptionChange"
+            value="{{props.store.description}}"
+            placeholder-class="input-placeholder"
+            placeholder="排班描述(最多100字)"
+        />
+    </view>
+
+    
+    <!-- <i-input title="挂号费" type="number" bind:change="feeChange" value="{{props.store.fee}}" placeholder="输入挂号费"></i-input>
+    <i-input type="textarea" title="描述" bind:change="descriptionChange" value="{{props.store.description}}" placeholder="排班描述(最多100字)"></i-input> -->
   </i-cell-group>
   <button bindtap="submit" style="margin: 10px;" class="btn btn-primary">提交</button>
   <i-action-sheet visible="{{ props.store.visitTimeShow }}" actions="{{ [{name:'上午'},{name:'下午'}] }}" show-cancel bind:cancel="cancelVisitTime" bind:click="handleVisitTime">

@@ -1,6 +1,3 @@
-import moment from 'moment';
-import { request } from '../../utils';
-import {API} from '../../const';
 import { toJS } from '../../libs/mobx';
 
 var extendObservable = require('../../libs/mobx').extendObservable;
@@ -12,6 +9,7 @@ class Store {
 			department2: [],
 			selectedDep1ID: '',
 			selectedDep2ID: '',
+			loadMsg: '',
 		});
 	}
 	getSelectedDepartment() {

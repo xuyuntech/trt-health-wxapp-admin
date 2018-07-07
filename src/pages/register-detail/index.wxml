@@ -16,11 +16,11 @@
                 </view>
                 <view class="info-line">
                     <view class="info-title">就诊医院:</view>
-                    <view class="info-text">{{props.store.registerHistory.id}}</view>
+                    <view class="info-text">{{props.store.registerHistory.arrangementHistory.hospital.name}}</view>
                 </view>
                 <view class="info-line">
                     <view class="info-title">医师:</view>
-                    <view class="info-text">张三</view>
+                    <view class="info-text">{{props.store.registerHistory.arrangementHistory.doctor.realName}}</view>
                 </view>
             </view>
         </view>
@@ -33,19 +33,19 @@
             <view class="infoview">
                 <view class="info-line">
                     <view class="info-title">就诊人:</view>
-                    <view class="info-text">张三</view>
+                    <view class="info-text">{{props.store.registerHistory.visitor.realName}}</view>
                 </view>
                 <view class="info-line">
                     <view class="info-title">性别:</view>
-                    <view class="info-text">男</view>
+                    <view class="info-text">{{props.store.registerHistory.visitor.gender == 'MALE'?'男':'女'}}</view>
                 </view>
                 <view class="info-line">
                     <view class="info-title">身份证:</view>
-                    <view class="info-text">437284783927483924789234</view>
+                    <view class="info-text">{{props.store.registerHistory.visitor.sid}}</view>
                 </view>
                 <view class="info-line">
                     <view class="info-title">手机号:</view>
-                    <view class="info-text">12388998899</view>
+                    <view class="info-text">{{props.store.registerHistory.visitor.phone}}</view>
                 </view>
             </view>
         </view>
@@ -90,6 +90,6 @@
         <button bindtap="submit" class="btn btn-primary">保存</button>
         <button wx:if="{{props.store.registerHistory.state === 'Register'}}" class="btn btn-danger" bindtap="verifyAction">核销</button>
         <button wx:if="{{props.store.registerHistory.state === 'Visiting'}}" class="btn btn-success" bindtap="finishAction">完成</button>
-        <button wx:if="{{props.store.registerHistory.state === 'Finish'}}" class="btn" disabled>已完成</button>
+        <button wx:if="{{props.store.registerHistory.state === 'Finished'}}" class="btn" disabled>已完成</button>
     </view>
 </view>

@@ -9,16 +9,6 @@ App({
 		logs.unshift(Date.now());
 		wx.setStorageSync('logs', logs);
 
-		const self = this;
-		const accessToken = wx.getStorageSync('access_token');
-		const userID = wx.getStorageSync('user_id');
-		const userInfo = wx.getStorageSync('user_info');
-		if (!accessToken) {
-			self.login();
-		}
-		else {
-			self.setRequestHeader({accessToken, userID, userInfo});
-		}
 		// wx.checkSession({
 		// 	success: function () {
 		// 		console.log('check ok');
@@ -29,6 +19,18 @@ App({
 		// 		self.login();
 		// 	},
 		// });
+	},
+	checkLogin() {
+		const self = this;
+		const accessToken = wx.getStorageSync('access_token');
+		const userID = wx.getStorageSync('user_id');
+		const userInfo = wx.getStorageSync('user_info');
+		if (!accessToken) {
+			self.login();
+		}
+		else {
+			self.setRequestHeader({accessToken, userID, userInfo});
+		}
 	},
 	getPrevPage() {
 		const routers = getCurrentPages(); // eslint-disable-line
@@ -65,13 +67,16 @@ App({
 		};
 	},
 	login: function () {
+		console.log('logn ......');
 		// 登录
-		wx.redirectTo({
-			url: '/pages/login/index',
+		setTimeout(() => {
+			wx.redirectTo({
+				url: '/pages/login/index',
+			});
 		});
 	},
 	home: function () {
-		wx.redirectTo({
+		wx.reLaunch({
 			url: '/pages/index/index',
 		});
 	},

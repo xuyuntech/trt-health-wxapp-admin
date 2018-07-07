@@ -24,7 +24,7 @@ Page(observer(
 					url: API.Hospitals.Query(),
 				});
 				console.log(data);
-				store.hospitals = (data.results || []).map((item) => ({...item, link: `/pages/hospitals-add/index?id=${item.id}&editMode=true`}));
+				store.hospitals = (data.results || []).map((item) => ({...item, link: `/pages/hospitals-add/index?id=${item.id}&editMode=true`, phone: item.phone1 ? `${item.phone1}-${item.phone2}` : item.phone2}));
 			}
 			catch (err) {
 				console.error(err);

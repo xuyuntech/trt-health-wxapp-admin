@@ -1,9 +1,61 @@
 <view class="container">
     <i-panel title="基本信息">
-        <i-input value="{{ props.store.realName }}" data-name="realName" bind:change="valueChange" type="text" title="姓名" placeholder="输入姓名" maxlength="50" />
-        <view class="c-select"><i-cell title="性别" data-name="gender"  bind:change="valueChange" is-link value="{{props.store.gender}}" bind:click="selectGender"></i-cell></view>
-        <i-input value="{{ props.store.age }}" data-name="age"  bind:change="valueChange" type="number" title="年龄" placeholder="输入年龄" maxlength="50" />
-        <i-input value="{{ props.store.phone }}" data-name="phone"  bind:change="valueChange" type="number" title="手机号码" placeholder="输入手机号" maxlength="50" />
+        <view class="cell">
+            <view class="cell-hd input-title">
+                姓名
+            </view>
+            <input
+                class="input-input cell-bd"
+                placeholder-class="input-placeholder"
+                type="text"
+                bindinput="valueChange"
+                value="{{props.store.realName}}"
+                placeholder="输入姓名"
+                data-name="realName"
+            />
+        </view>
+        <!-- <i-input value="{{ props.store.realName }}" data-name="realName" bind:change="valueChange" type="text" title="姓名" placeholder="输入姓名" maxlength="50" /> -->
+        <view class="cell cell-access" bindtap="selectGender">
+            <view class="cell-bd">
+                <view class="cell-text">
+                    性别
+                </view>
+            </view>
+            <view class="cell-ft">
+                {{props.store.gender}}
+            </view>
+        </view>
+        <!-- <view class="c-select"><i-cell title="性别" data-name="gender"  bind:change="valueChange" is-link value="{{props.store.gender}}" bind:click="selectGender"></i-cell></view> -->
+        <view class="cell">
+            <view class="cell-hd input-title">
+                年龄
+            </view>
+            <input
+                class="input-input cell-bd"
+                placeholder-class="input-placeholder"
+                type="number"
+                bindinput="valueChange"
+                value="{{props.store.age}}"
+                placeholder="输入年龄"
+                data-name="age"
+            />
+        </view>
+        <!-- <i-input value="{{ props.store.age }}" data-name="age"  bind:change="valueChange" type="number" title="年龄" placeholder="输入年龄" maxlength="50" /> -->
+        <view class="cell">
+            <view class="cell-hd input-title">
+                手机号码
+            </view>
+            <input
+                class="input-input cell-bd"
+                placeholder-class="input-placeholder"
+                type="number"
+                bindinput="valueChange"
+                value="{{props.store.phone}}"
+                placeholder="输入手机号"
+                data-name="phone"
+            />
+        </view>
+        <!-- <i-input value="{{ props.store.phone }}" data-name="phone"  bind:change="valueChange" type="number" title="手机号码" placeholder="输入手机号" maxlength="50" /> -->
         <view class="headImgs">
             <view class="">头像</view>
             <view class="pic-list">
@@ -13,9 +65,55 @@
         </view>
     </i-panel>
     <i-panel title="医师信息">
-        <i-input value="{{ props.store.title }}" data-name="title"  bind:change="valueChange" type="text" title="职称" placeholder="输入职称" maxlength="50" />
-        <i-input value="{{ props.store.description }}" data-name="description"  bind:change="valueChange" type="textarea" title="简介" placeholder="输入简介(最多100字)" maxlength="50" />
-        <i-input value="{{ props.store.skilledIn }}"  data-name="skilledIn"  bind:change="valueChange" type="textarea" title="擅长" placeholder="输入擅长(最多100字)" maxlength="50" />
+        <view class="cell">
+            <view class="cell-hd input-title">
+                职称
+            </view>
+            <input
+                class="input-input cell-bd"
+                placeholder-class="input-placeholder"
+                type="text"
+                bindinput="valueChange"
+                value="{{props.store.title}}"
+                placeholder="输入职称"
+                data-name="title"
+            />
+        </view>
+        <!-- <i-input value="{{ props.store.title }}" data-name="title"  bind:change="valueChange" type="text" title="职称" placeholder="输入职称" maxlength="50" /> -->
+        <view class="cell">
+            <view class="cell-hd input-title">
+                简介
+            </view>
+            <textarea
+                wx:if="{{!props.store.genderShow}}"
+                auto-height
+                maxlength="100"
+                class="input-input cell-bd"
+                placeholder-class="input-placeholder"
+                value="{{props.store.description}}"
+                data-name="description" 
+                bindinput="valueChange" 
+                placeholder="输入简介(最多100字)"
+            />
+        </view>
+        <view class="cell">
+            <view class="cell-hd input-title">
+                擅长
+            </view>
+            <textarea
+                wx:if="{{!props.store.genderShow}}"
+                auto-height
+                maxlength="100"
+                class="input-input cell-bd"
+                placeholder-class="input-placeholder"
+                value="{{props.store.skilledIn}}"
+                data-name="skilledIn" 
+                bindinput="valueChange" 
+                placeholder="输入擅长(最多100字)"
+            />
+        </view>
+        <!-- <i-input value="{{ props.store.description }}" data-name="description"  bind:change="valueChange" type="textarea" title="简介" placeholder="输入简介(最多100字)" maxlength="50" />
+        <i-input value="{{ props.store.skilledIn }}"  data-name="skilledIn"  bind:change="valueChange" type="textarea" title="擅长" placeholder="输入擅长(最多100字)" maxlength="50" /> -->
     </i-panel>
     <i-panel title="登录信息">
         <i-input value="{{ props.store.name }}" data-name="name"  bind:change="valueChange" type="text" title="登录名" placeholder="字母/数字/点/下划线，字母开头" maxlength="50" />
@@ -60,6 +158,37 @@
             <view class="input-wrapper">
                 <text class="input-label">职称</text>
                 <input value="{{ props.store.phone }}" data-name="phone" bindinput="valueChange" placeholder="输入电话" />
+            </view>
+            <view class="cell">
+                <view class="cell-hd input-title">
+                    简介
+                </view>
+                <textarea
+                    auto-height
+                    maxlength="100"
+                    class="input-input cell-bd"
+                    type="number"
+                    value="{{props.store.phone}}"
+                    data-name="phone" 
+                    bindinput="valueChange" 
+                    placeholder="输入电话"
+                />
+            </view>
+            <view class="cell">
+                <view class="cell-hd input-title">
+                    擅长
+                </view>
+                <textarea
+                    auto-height
+                    maxlength="100"
+                    class="input-input cell-bd"
+                    type="number"
+                    placeholder-class="input-placeholder"
+                    value="{{props.store.skilledIn}}"
+                    data-name="skilledIn" 
+                    bindinput="valueChange" 
+                    placeholder="输入擅长"
+                />
             </view>
             <view class="input-wrapper">
                 <text class="input-label">简介</text>

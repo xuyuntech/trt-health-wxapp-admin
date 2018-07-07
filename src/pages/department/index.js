@@ -28,6 +28,7 @@ Page(observer(
 			const { hospital = '61cd06e0-7d37-11e8-b8bd-33dbbb63e067' } = options;
 			await delay();
 			try {
+				store.loadMsg = '加载中...';
 				const data = await request({
 					url: API.Department1.Query(),
 					data: {
@@ -36,6 +37,11 @@ Page(observer(
 					},
 				});
 				store.department1 = data.results;
+				if (store.department1.length === 0) {
+					store.loadMsg = '该医院暂无科室数据';
+					return;
+				}
+				store.loadMsg = '';
 				const firstDeps = store.department1[0];
 				if (firstDeps && firstDeps.department2s) {
 					store.selectedDep1ID = firstDeps.id;

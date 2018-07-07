@@ -1,6 +1,6 @@
 
 {
-  "navigationBarTitleText":"添加医师",
+  "navigationBarTitleText":"新建排班",
   "usingComponents": {
     "i-action-sheet": "../../iview/action-sheet/index",
     "i-input": "../../iview/input/index",

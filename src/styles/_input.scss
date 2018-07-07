@@ -1,0 +1,18 @@
+
+.input-wrapped{margin:10px 15px;background-color:#fff}
+
+.input-wrapped::after{left:0;border-width:1px;border-radius:4px}
+
+.input-error{color:#ed3f14}
+
+.input-title{color:#495060;min-width:65px;padding-right:10px}
+
+.input-input{flex:1;line-height:1.6;padding:1px 0;min-height:22px;height:auto;font-size:14px}
+
+.input-placeholder{font-size:14px;line-height:1.6;z-index: 0;}
+
+.input-input-right{text-align:right}
+
+.input.input-wrapped::after{display:block}
+
+.input-wrapped.input-error::after{border-color:#ed3f14}

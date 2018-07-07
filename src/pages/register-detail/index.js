@@ -30,6 +30,39 @@ Page(observer(
 		hospitalChange({detail: {value}}) {
 			store.hospitalIndex = value;
 		},
+		finishAction() {
+			wx.showModal({
+				title: '提示',
+				content: '确定完成该挂号单吗?',
+				async success(res) {
+					if (res.confirm) {
+						try {
+							await request({
+								url: API.VerifyRegisterAction.Finish(store.registerHistoryID),
+								method: 'PUT',
+							});
+							wx.showModal({
+								title: '操作成功',
+								content: '点击确定返回',
+								success(res) {
+									if (res.confirm) {
+										app.getPrevPage().props.store.reload();
+										wx.navigateBack();
+									}
+								},
+							});
+						}
+						catch (err) {
+							wx.showModal({
+								title: '操作失败',
+								content: `${err}`,
+								showCancel: false,
+							});
+						}
+					}
+				},
+			});
+		},
 		verifyAction() {
 			wx.showModal({
 				title: '提示',

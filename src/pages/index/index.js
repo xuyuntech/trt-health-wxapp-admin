@@ -1,4 +1,3 @@
-import { flow } from 'lodash';
 import { observer } from '../../libs/observer';
 import store from './store';
 import {FUNCS} from '../../const';
@@ -24,14 +23,7 @@ Page(observer(
 		},
 		async onLoad() {
 			await delay();
-
-			const log = flow(() => {
-				console.log('is wechat mini program: ', __WECHAT__);
-				console.log('is alipay mini program: ', __ALIPAY__);
-				console.log('DEV: ', __DEV__);
-			});
-
-			log();
+			app.checkLogin();
 		},
 	},
 ));

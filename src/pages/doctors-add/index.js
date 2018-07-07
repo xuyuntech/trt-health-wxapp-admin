@@ -12,7 +12,7 @@ Page(observer(
 		props: {
 			store,
 		},
-		valueChange({detail: {detail}, currentTarget}) {
+		valueChange({detail, currentTarget}) {
 			const { value } = detail;
 			const { dataset } = currentTarget;
 			store[dataset['name']] = value;
