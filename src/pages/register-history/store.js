@@ -20,6 +20,7 @@ var TodoStore = function () {
 				url: API.RegisterHistory.Query(),
 				data: {
 					f: 'true',
+					order: 'created DESC',
 				},
 			});
 			this.registerItems = data.results.map((item) => ({
