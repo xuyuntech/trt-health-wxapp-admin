@@ -1,12 +1,22 @@
 <wxs module="tools">
-var getDepartmentTip = function(selectedDepartment){
-    if (!selectedDepartment) {
+var getDepartmentTip = function(dep1, dep2){
+    if (!dep1 || !dep2) {
         return '';
     }
-    return selectedDepartment.department1.name + '-' + selectedDepartment.department2.name;
+    return dep1.name + '-' + dep2.name;
+};
+var getVisitTimeLabel = function(value, list){
+    for(var i=0;i<list.length;i++){
+        var item = list[i];
+        if (item.value === value) {
+            return item.name;
+        }
+    }
+    return '';
 };
 module.exports = {
-    getDepartmentTip: getDepartmentTip
+    getDepartmentTip: getDepartmentTip,
+    getVisitTimeLabel: getVisitTimeLabel
 };
 </wxs>
 <view class="container">
@@ -45,11 +55,10 @@ module.exports = {
             </view>
         </view>
         <view class="cell-ft">
-            {{tools.getDepartmentTip(props.store.selectedDepartment)}}
+            {{tools.getDepartmentTip(props.store.department1, props.store.department2)}}
         </view>
     </view>
-    <!-- <i-cell title="选择科室" bind:click="selectDepartment" is-link value="{{tools.getDepartmentTip(props.store.selectedDepartment)}}"></i-cell> -->
-    <picker bindchange="doctorChange" range-key="realName" value="{{props.store.doctorIndex}}" range="{{props.store.selectedDepartment.department2.doctors}}">
+    <picker bindchange="doctorChange" range-key="realName" value="{{props.store.doctorIndex}}" range="{{props.store.doctors}}">
         <view class="cell cell-access">
             <view class="cell-bd">
                 <view class="cell-text">
@@ -57,14 +66,9 @@ module.exports = {
                 </view>
             </view>
             <view class="cell-ft">
-                {{props.store.doctorIndex == -1?'请选择':props.store.selectedDepartment.department2.doctors[props.store.doctorIndex].realName}}
+                {{props.store.doctorIndex == -1?'请选择':props.store.doctors[props.store.doctorIndex].realName}}
             </view>
         </view>
-        <!-- <i-cell is-link value="{{props.store.doctorIndex == -1?'请选择':props.store.selectedDepartment.department2.doctors[props.store.doctorIndex].realName}}">
-            <view class="picker">
-                选择医师
-            </view>
-        </i-cell> -->
     </picker>
     <view class="cell cell-access" bindtap="showVisitTime">
         <view class="cell-bd">
@@ -73,10 +77,9 @@ module.exports = {
             </view>
         </view>
         <view class="cell-ft">
-            {{props.store.visitTimeLabel}}
+            {{tools.getVisitTimeLabel(props.store.visitTime, props.store.visitTimeList || [])}}
         </view>
     </view>
-    <!-- <i-cell title="选择出诊时间" bind:click="showVisitTime" value="{{props.store.visitTimeLabel}}" is-link></i-cell> -->
     
     <view class="cell">
         <view class="cell-hd input-title">
@@ -106,12 +109,12 @@ module.exports = {
             placeholder="排班描述(最多100字)"
         />
     </view>
-
-    
-    <!-- <i-input title="挂号费" type="number" bind:change="feeChange" value="{{props.store.fee}}" placeholder="输入挂号费"></i-input>
-    <i-input type="textarea" title="描述" bind:change="descriptionChange" value="{{props.store.description}}" placeholder="排班描述(最多100字)"></i-input> -->
   </i-cell-group>
-  <button bindtap="submit" style="margin: 10px;" class="btn btn-primary">提交</button>
-  <i-action-sheet visible="{{ props.store.visitTimeShow }}" actions="{{ [{name:'上午'},{name:'下午'}] }}" show-cancel bind:cancel="cancelVisitTime" bind:click="handleVisitTime">
+  <button wx:if="{{props.store.state !== 'Cancel'}}" bindtap="submit" style="margin: 10px;" class="btn btn-primary">提交</button>
+  <view wx:if="{{props.store.mode === 'edit'}}">
+    <button wx:if="{{props.store.state !== 'Cancel'}}" bindtap="cancel" style="margin: 10px;" class="btn btn-danger">取消排班</button>
+    <button wx:else style="margin: 10px;" class="btn" disabled>已取消</button>
+  </view>
+  <i-action-sheet visible="{{ props.store.visitTimeShow }}" actions="{{ props.store.visitTimeList }}" show-cancel bind:cancel="cancelVisitTime" bind:click="handleVisitTime">
   </i-action-sheet>
 </view>

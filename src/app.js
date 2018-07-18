@@ -80,6 +80,9 @@ App({
 			url: '/pages/index/index',
 		});
 	},
+	toast: function (title, icon = 'none') {
+		return wx.showToast({title, icon});
+	},
 	error: function (err) {
 		wx.showToast({title: err.err, icon: 'error'});
 	},

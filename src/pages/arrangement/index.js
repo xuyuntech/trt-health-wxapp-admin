@@ -13,6 +13,12 @@ Page(observer(
 		props: {
 			store,
 		},
+		openDetail({currentTarget: {dataset}}) {
+			const { arrangementId } = dataset;
+			wx.navigateTo({
+				url: `/pages/arrangement-add/index?id=${arrangementId}&mode=edit`,
+			});
+		},
 		addArrangement() {
 			wx.navigateTo({
 				url: `/pages/arrangement-add/index?selectedDate=${store.selectedDate}`,
@@ -41,6 +47,10 @@ Page(observer(
 			}
 			store.selectedDate = day;
 			await store.queryByVisitDate(day);
+		},
+		async reload() {
+			console.log('.....reload');
+			await store.queryByVisitDate();
 		},
 		async onLoad() {
 			await delay();

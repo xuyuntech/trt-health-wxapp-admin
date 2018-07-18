@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 function formatNumber(n) {
 	n = n.toString();
 	return n[1] ? n : '0' + n;
@@ -18,6 +20,10 @@ export function formatTime(date) {
 		' ' +
 		[hour, minute, second].map(formatNumber).join(':')
 	);
+}
+
+export function visitDateTime(visitDate, visitTime) {
+	return `${moment(visitDate).format('YYYY-MM-DD')} ${visitTime === 'AM' ? '上午' : '下午'}`;
 }
 
 export async function request({url, headers, method = 'GET', data}) {

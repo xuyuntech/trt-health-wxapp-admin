@@ -14,16 +14,15 @@ Page(observer(
 			this.props.store.visitTimeShow = true;
 		},
 		handleVisitTime({detail: {index}}) {
-			store.visitTimeIndex = index;
-			store.visitTimeLabel = index === 0 ? '上午' : (index === 1 ? '下午' : '请选择');
+			store.visitTime = store.visitTimeList[index].value;
+			// store.visitTimeLabel = index === 0 ? '上午' : (index === 1 ? '下午' : '请选择');
 			this.cancelVisitTime();
 		},
 		cancelVisitTime() { this.props.store.visitTimeShow = false; },
 		visitDateChange({detail: {value}}) {
 			store.visitDate = value;
 		},
-		feeChange({detail: {detail: {value}}}) {
-			console.log('>>>', value);
+		feeChange({detail: {value}}) {
 			store.fee = value;
 		},
 		selectDepartment() {
@@ -43,15 +42,34 @@ Page(observer(
 		descriptionChange({detail: {detail: {value}}}) {
 			store.description = value;
 		},
+		cancel() {
+			wx.showModal({
+				title: '提示',
+				content: '确定要取消该排班吗？',
+				async success({confirm}) {
+					if (confirm) {
+						await store.cancel();
+					}
+				},
+			});
+		},
 		async submit(e) {
 			await store.submit();
 		},
 		async onLoad(options) {
 			await delay();
-			const { selectedDate } = options;
+			store.clear();
+			const { selectedDate, mode, id } = options;
+			store.mode = mode;
+			store.id = id;
 			store.selectedDate = selectedDate;
-			// await store.loadDoctors();
+			wx.setNavigationBarTitle({
+				title: mode === 'edit' ? '更改排班' : '新增排班',
+			});
 			await store.loadHospitals();
+			if (mode === 'edit' && id) {
+				await store.load(id);
+			}
 		},
 	},
 ));

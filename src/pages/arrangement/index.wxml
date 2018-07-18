@@ -39,19 +39,26 @@ module.exports = {
         </view>
       </view>
   </view>
-  <i-button bind:click="addArrangement" type="ghost">
-    <i-icon type="add" size="24" color="#80848f" />添加排班记录</i-button>
+  <i-button bind:click="addArrangement" type="primary">
+    <i-icon type="add" size="24" color="#fff" />添加排班记录</i-button>
   <view class="whitespace"></view>
   <view class="arrangement-items">
     <view style="text-align: center;color: #999;margin-bottom: 5px;">{{props.store.selectedDate}} 排班信息如下</view>
     <view  wx:key="{{item.hospital.name}}" wx:for="{{props.store.arrangementHistories}}">
-        <i-card title="{{item.hospital.name}}" full>
-            <view slot="content">
-                <view wx:key="id" wx:for="{{item.arrangementHistories}}">
-                    {{item.doctor.realName}}, {{item.visitDate}} {{item.visitTime}}, ¥{{item.fee}}, {{item.department1.name}}-{{item.department2.name}}
+        <view class="list">
+            <view class="list-title">{{item.hospital.name}}</view>
+            <view class="cell cell-access" bindtap="openDetail" data-arrangement-id="{{item.id}}" wx:key="id" wx:for="{{item.arrangementHistories}}">
+                <view class="cell-bd">
+                    <view>{{item.visitDate}} {{item.visitTime}}</view>
+                    <view>
+                        <text class="mr-5 font-bold">{{item.doctor.realName}}</text>
+                        <text class="mr-5">{{item.department1.name}}-{{item.department2.name}}</text>
+                        <text class="clr-warning">¥{{item.fee}}</text>
+                    </view>
                 </view>
+                <view class="cell-ft clr-sub fs-small">{{item.state === 'Cancel' ? '已取消' : ''}}</view>
             </view>
-        </i-card>
+        </view>
         <view class="whitespace"></view>
     </view>
   </view>

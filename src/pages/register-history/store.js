@@ -25,10 +25,7 @@ var TodoStore = function () {
 			});
 			this.registerItems = data.results.map((item) => ({
 				...item,
-				arrangementHistory: {
-					...item.arrangementHistory,
-					visitDateTime: `${moment(item.arrangementHistory.visitDate).format('YYYY-MM-DD')} ${item.arrangementHistory.visitTime === 'AM' ? '上午' : '下午'}`,
-				},
+				visitDateTime: `${moment(item.visitDate).format('YYYY-MM-DD')} ${item.visitTime === 'AM' ? '上午' : '下午'}`,
 				stateStr: REGISTER_STATE[item.state],
 			}));
 		}

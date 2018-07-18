@@ -87,4 +87,4 @@ var TodoStore = function () {
 	};
 };
 
-module.exports = new TodoStore();
+export default new TodoStore();

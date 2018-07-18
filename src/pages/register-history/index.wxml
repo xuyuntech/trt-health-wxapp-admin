@@ -1,5 +1,5 @@
 <view class="container">
-    <view class="search-bar">
+    <!-- <view class="search-bar">
         <view class="search-bar-input">
             <i-icon type="search" size="20" color="#80848f" />
             <input value="{{ value1 }}" autofocus placeholder="就诊人 身份证/手机号" />
@@ -27,26 +27,29 @@
                 </view>
             </picker>
         </view>
-    </view>
+    </view> -->
     <view class="reg-list">
         <view wx:if="{{props.store.registerItems.length == 0}}">
             <view class="mv-5 clr-sub txt-center">{{props.store.listLoadingMsg}}</view>
         </view>
         <view data-id="{{item.id}}" bindtap="openDetail" wx:for="{{props.store.registerItems}}" class="card">
             <view class="card-header">
-                <view class="card-title">{{item.arrangementHistory.visitDateTime}}</view>
+                <view class="card-title">{{item.visitDateTime}}</view>
                 <view class="card-actions">{{item.stateStr}}</view>
             </view>
             <view class="card-body">
                 <view class="detail-info">
                     <view style="flex:1;">
-                        <view class="mb-3"><text class="font-bold">{{item.visitor.realName}}</text> <text class="ml-5">{{item.visitor.genderStr}} {{item.visitor.phone}}</text></view>
+                        <view class="mb-3">
+                            <text class="font-bold">{{item.visitor.realName}}</text> 
+                            <text class="ml-5">{{item.visitor.gender === 'MALE' ? '男' : '女'}} {{item.visitor.phone}}</text>
+                        </view>
                         <view class="mb-3"><text>{{item.visitor.sid}}</text></view>
                         <view class="mb-3">
-                            <text class="clr-sub">门店: </text><text>{{item.arrangementHistory.hospital.name}}</text>
+                            <text class="clr-sub">门店: </text><text>{{item.hospitalName}}</text>
                         </view>
                         <view class="mb-3">
-                            <text class="clr-sub">医师:</text> {{item.arrangementHistory.doctor.realName}}
+                            <text class="clr-sub">医师:</text> {{item.doctorName}}
                         </view>
                     </view>
                     <view>

@@ -15,7 +15,7 @@ export const REGISTER_STATE = {
 	Finished: '已开处方',
 };
 
-const BASE_URL = __DEV__ ? 'http://192.168.1.186:3002' : 'http://api.trt-health.xuyuntech.com';
+const BASE_URL = __DEV__ ? 'http://192.168.1.104:3002' : 'http://api.trt-health.xuyuntech.com';
 
 export const API = {
 	Users: {
@@ -29,6 +29,8 @@ export const API = {
 		Create: () => `${BASE_URL}/arrangement_history`,
 		Query: () => `${BASE_URL}/arrangement_history`,
 		QueryAll: () => `${BASE_URL}/arrangement_history/all`,
+		FindByID: (id) => `${BASE_URL}/arrangement_history/${id}`,
+		Cancel: (id) => `${BASE_URL}/arrangement_history/${id}/cancel`,
 	},
 	RegisterHistory: {
 		Query: () => `${BASE_URL}/register_history`,
@@ -36,6 +38,11 @@ export const API = {
 	},
 	Department1: {
 		Query: () => `${BASE_URL}/department1`,
+	},
+	Department2: {
+		Query: () => `${BASE_URL}/department2`,
+		FindByID: (id) => `${BASE_URL}/department2/${id}`,
+		QueryDoctors: (id) => `${BASE_URL}/department2/${id}/doctors`,
 	},
 	Hospitals: {
 		Query: () => `${BASE_URL}/hospital`,
