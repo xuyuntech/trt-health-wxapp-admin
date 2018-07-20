@@ -66,7 +66,12 @@ Page(observer(
 			wx.setNavigationBarTitle({
 				title: mode === 'edit' ? '更改排班' : '新增排班',
 			});
-			await store.loadHospitals();
+			if (app.isHospitalAdmin()) {
+				await store.loadHospital();
+			}
+			else {
+				await store.loadHospitals();
+			}
 			if (mode === 'edit' && id) {
 				await store.load(id);
 			}

@@ -70,12 +70,16 @@ class Store {
 	}
 	async submit() {
 		const { visitTime, hospitalIndex, doctorIndex,
-			visitDate, description, fee, department1, department2 } = this;
-
-		if (hospitalIndex < 0) {
-			return wx.showToast({title: '请选择门店', icon: 'none'});
+			visitDate, description, fee, department1, department2, doctors } = this;
+		const hospital = this.hospitals[hospitalIndex];
+		if (hospitalIndex < 0 || !hospital) {
+			return wx.showToast({title: '请选择医院', icon: 'none'});
 		}
-		if (doctorIndex < 0) {
+		if (!department1 || !department2) {
+			return app.toast('您还没有选择科室');
+		}
+		const doctor = doctors[doctorIndex];
+		if (doctorIndex < 0 || !doctor) {
 			return wx.showToast({title: '请选择医师', icon: 'none'});
 		}
 		if (!visitTime) {
@@ -84,15 +88,10 @@ class Store {
 		if (isNaN(fee)) {
 			return wx.showToast({title: '请填写挂号费', icon: 'none'});
 		}
-		if (!department1 || !department2) {
-			return app.toast('您还没有选择科室');
-		}
-		const hospital = this.hospitals[hospitalIndex];
-		const { doctors } = department2 || [];
 		const data = {
 			visitTime,
 			hospital: hospital.id,
-			doctor: doctors[doctorIndex].name,
+			doctor: doctor.name,
 			department1: department1.id,
 			department2: department2.id,
 			visitDate: new Date(visitDate).toISOString(), // new Date(visitDate).toISOString(),
@@ -161,6 +160,19 @@ class Store {
 				description,
 				doctors,
 			});
+		}
+		catch (err) {
+			console.error(err);
+		}
+	}
+	async loadHospital() {
+		try {
+			const data = await request({
+				url: API.Hospitals.FindByID(app.storage().userInfo.hospital),
+			});
+			console.log(data);
+			this.hospitals = [data.result];
+			this.hospitalIndex = 0;
 		}
 		catch (err) {
 			console.error(err);

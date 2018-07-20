@@ -1,0 +1,16 @@
+<view class="container">
+  <view class="bg-primary avatar">
+    <view class="avatar-pack" wx:if="{{props.store.userInfo}}">
+      <view class="avatar-bg" style="background-image:url({{props.store.userInfo.avatar}});"></view>
+      <view class="avatar-name">{{props.store.userInfo.name}}</view>
+    </view>
+    <view class="avatar-pack" wx:else>
+      <view class="avatar-bg"></view>
+      <view class="avatar-name">未登录</view>
+    </view>
+  </view>
+  <view class="whitespace"></view>
+  <view class="cell txt-center" bindtap="logout">
+    <view class="clr-danger" style="width:100%">退出登录</view>
+  </view>
+</view>

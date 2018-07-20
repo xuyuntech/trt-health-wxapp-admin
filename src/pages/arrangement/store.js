@@ -10,7 +10,7 @@ const app = getApp();
 var TodoStore = function () {
 	extendObservable(this, {
 		arrangementHistories: [],
-
+		loadMsg: '',
 		selectedDate: moment().format('YYYY-MM-DD'),
 		get daysInMonth() {
 			const sd = moment(this.selectedDate);
@@ -58,6 +58,8 @@ var TodoStore = function () {
 			visitDate = moment().format('YYYY-MM-DD');
 		}
 		try {
+			this.loadMsg = '加载中';
+			this.arrangementHistories = [];
 			const res = await request({
 				url: API.ArrangementHistory.QueryAll(),
 				data: {
@@ -65,6 +67,11 @@ var TodoStore = function () {
 				},
 			});
 			const results = res.results || [];
+			if (!results.length) {
+				this.loadMsg = '暂无数据';
+				return;
+			}
+			this.loadMsg = '';
 			const m = {};
 			results.forEach((item) => {
 				if (!m[item.hospital.name]) {

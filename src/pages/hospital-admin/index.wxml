@@ -1,0 +1,50 @@
+<wxs module="tools">
+
+</wxs>
+<view class="container">
+  <view class="whitespace"></view>
+  <i-cell-group>
+    <picker bindchange="hospitalChange" range-key="name" value="{{props.store.hospitalIndex}}" range="{{props.store.hospitals}}">
+        <view class="cell cell-access">
+            <view class="cell-bd">
+                <view class="cell-text">
+                    选择医院
+                </view>
+            </view>
+            <view class="cell-ft">
+                {{props.store.hospitalIndex == -1?'请选择':props.store.hospitals[props.store.hospitalIndex].name}}
+            </view>
+        </view>
+    </picker>
+    
+    <view class="cell">
+        <view class="cell-hd input-title">
+            用户名
+        </view>
+        <input
+            data-name="username"
+            class="input-input cell-bd"
+            type="number"
+            bindinput="valueChange"
+            value="{{props.store.data.username}}"
+            placeholder-class="input-placeholder"
+            placeholder="字母、数字、下划线、- ，6 位至 16 位"
+        />
+    </view>
+    <view class="cell">
+        <view class="cell-hd input-title">
+            密码
+        </view>
+        <input
+            data-name="password"
+            class="input-input cell-bd"
+            type="number"
+            bindinput="valueChange"
+            value="{{props.store.data.password}}"
+            placeholder-class="input-placeholder"
+            placeholder="最少 8 位"
+        />
+    </view>
+  </i-cell-group>
+  <button bindtap="submit" style="margin: 10px;" class="btn btn-primary">提交</button>
+</view>

@@ -1,3 +1,5 @@
+import { flow } from 'lodash';
+import moment from 'moment';
 import { observer } from '../../libs/observer';
 import store from './store';
 import {FUNCS} from '../../const';
@@ -11,22 +13,19 @@ Page(observer(
 		props: {
 			store,
 		},
-		onShow() {
-			store.isHospitalAdmin = app.isHospitalAdmin();
+		hospitalChange({detail: {value}}) {
+			store.hospitalIndex = value;
 		},
-		openFunc({currentTarget: {dataset}}) {
-			const url = FUNCS[dataset['key']];
-			if (!url) {
-				wx.showToast({title: '此功能还未开放', icon: 'none'});
-				return;
-			}
-			wx.navigateTo({
-				url,
-			});
+		valueChange({currentTarget: {dataset}, detail: {value}}) {
+			const { name } = dataset;
+			Object.assign(store.data, {[name]: value});
+		},
+		submit() {
+			store.submit();
 		},
 		async onLoad() {
 			await delay();
-			app.checkLogin();
+			await store.loadHospitals();
 		},
 	},
 ));

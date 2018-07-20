@@ -2,13 +2,13 @@
     <view class="wrapper help-text" wx:if="{{props.store.loadMsg}}">{{props.store.loadMsg}}</view>
   <view class="wrapper" wx:else>
     <scroll-view scroll-y class="left">
-        <view wx:for="{{props.store.department1}}" class="item {{item.id === props.store.selectedDep1ID ? 'selected' : ''}} {{props.store.department1.length === 0 ? 'full' : ''}}" bindtap="selectDep1" data-department="{{item.id}}">
+        <view wx:for="{{props.store.department1}}" wx:key="id" class="item {{item.id === props.store.selectedDep1ID ? 'selected' : ''}} {{props.store.department1.length === 0 ? 'full' : ''}}" bindtap="selectDep1" data-department="{{item.id}}">
         {{item.name}}
         </view>
     </scroll-view>
     <view class="right">
         <view wx:if="{{props.store.loadDep2Msg}}" class="help-text">{{loadDep2Msg}}</view>
-        <view wx:for="{{props.store.selectedDep2}}"  class="item {{item.id === props.store.selectedDep2ID ? 'selected' : ''}}" bindtap="selectDep2" data-department="{{item.id}}">
+        <view wx:for="{{props.store.selectedDep2}}" wx:key="id"  class="item {{item.id === props.store.selectedDep2ID ? 'selected' : ''}}" bindtap="selectDep2" data-department="{{item.id}}">
             {{item.name}}
         </view>
     </view>

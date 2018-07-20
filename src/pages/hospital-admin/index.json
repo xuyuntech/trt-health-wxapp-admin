@@ -1,0 +1,14 @@
+
+{
+  "navigationBarTitleText":"医院管理员管理",
+  "usingComponents": {
+    "i-row": "../../iview/row/index",
+    "i-col": "../../iview/col/index",
+    "i-cell-group": "../../iview/cell-group/index",
+    "i-cell": "../../iview/cell/index",
+    "i-button": "../../iview/button/index",
+    "i-modal": "../../iview/modal/index",
+    "i-card": "../../iview/card/index",
+    "i-icon": "../../iview/icon/index"
+  }
+}

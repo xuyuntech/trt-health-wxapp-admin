@@ -13,7 +13,7 @@
           </i-grid-icon>
           <i-grid-label><text class="label fs-small">挂号管理</text></i-grid-label>
       </i-grid-item>
-      <i-grid-item i-class="funcs-item" data-key="DOCTOR" bindtap="openFunc">
+      <i-grid-item wx:if="{{!props.store.isHospitalAdmin}}" i-class="funcs-item" data-key="DOCTOR" bindtap="openFunc">
           <i-grid-icon i-class="funcs-item-icon">
               <image src="../../images/icons/doctorMgr.png" />
           </i-grid-icon>
@@ -21,13 +21,13 @@
       </i-grid-item>
     </i-row>
     <i-row>
-      <i-grid-item i-class="funcs-item" data-key="HOSPITAL" bindtap="openFunc">
+      <i-grid-item wx:if="{{!props.store.isHospitalAdmin}}" i-class="funcs-item" data-key="HOSPITAL" bindtap="openFunc">
         <i-grid-icon i-class="funcs-item-icon">
             <image src="../../images/icons/hospital.png" style="width: 44px !important;height:40px !important;" />
         </i-grid-icon>
         <i-grid-label><text class="label fs-small">医院管理</text></i-grid-label>
       </i-grid-item>
-      <i-grid-item i-class="funcs-item" data-key="ADMIN" bindtap="openFunc">
+      <i-grid-item wx:if="{{!props.store.isHospitalAdmin}}" i-class="funcs-item" data-key="ADMIN" bindtap="openFunc">
         <i-grid-icon i-class="funcs-item-icon">
             <image src="../../images/icons/admin.png" />
         </i-grid-icon>

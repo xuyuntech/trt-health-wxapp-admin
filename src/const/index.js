@@ -4,6 +4,7 @@ export const FUNCS = {
 	REGISTER_HISTORY: '/pages/register-history/index',
 	DOCTOR: '/pages/doctors/index',
 	HOSPITAL: '/pages/hospitals/index',
+	ADMIN: '/pages/hospital-admin/index',
 };
 
 // o Register // 挂号
@@ -15,11 +16,12 @@ export const REGISTER_STATE = {
 	Finished: '已开处方',
 };
 
-const BASE_URL = __DEV__ ? 'http://192.168.1.104:3002' : 'http://api.trt-health.xuyuntech.com';
+const BASE_URL = __DEV__ ? 'http://192.168.1.109:3002' : 'http://api.trt-health.xuyuntech.com';
 
 export const API = {
 	Users: {
 		Login: () => `${BASE_URL}/auth/users/login`,
+		Logout: () => `${BASE_URL}/auth/users/logout`,
 	},
 	VerifyRegisterAction: {
 		Verify: (id) => `${BASE_URL}/register_history/verify/${id}`,
@@ -55,5 +57,11 @@ export const API = {
 		Update: (name) => `${BASE_URL}/doctor/${name}`,
 		Create: () => `${BASE_URL}/doctor`,
 		FindByID: (id) => `${BASE_URL}/doctor/${id}`,
+	},
+	HospitalAdmin: {
+		Query: () => `${BASE_URL}/hospital_admin`,
+		Update: (name) => `${BASE_URL}/hospital_admin/${name}`,
+		Create: () => `${BASE_URL}/hospital_admin`,
+		FindByName: (name) => `${BASE_URL}/hospital_admin/${name}`,
 	},
 };

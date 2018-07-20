@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/mine/index",
     "pages/login/index",
     "pages/department/index",
     "pages/arrangement/index",
@@ -8,10 +9,25 @@
     "pages/doctors/index",
     "pages/doctors-add/index",
     "pages/hospitals/index",
+    "pages/hospital-admin/index",
     "pages/hospitals-add/index",
     "pages/register-detail/index",
     "pages/register-history/index"
   ],
+  "tabBar": {
+    "selectedColor": "#2d8cf0",
+    "list": [{
+      "iconPath": "images/guahao1.png",
+      "selectedIconPath": "images/guahao.png",
+      "pagePath": "pages/index/index",
+      "text": "挂号"
+    }, {
+      "iconPath": "images/mine.png",
+      "selectedIconPath": "images/mine-selected.png",
+      "pagePath": "pages/mine/index",
+      "text": "我的"
+    }]
+  },
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#0089ef",

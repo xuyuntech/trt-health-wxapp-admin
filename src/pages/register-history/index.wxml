@@ -29,7 +29,7 @@
         </view>
     </view> -->
     <view class="reg-list">
-        <view wx:if="{{props.store.registerItems.length == 0}}">
+        <view wx:if="{{props.store.listLoadingMsg}}">
             <view class="mv-5 clr-sub txt-center">{{props.store.listLoadingMsg}}</view>
         </view>
         <view data-id="{{item.id}}" bindtap="openDetail" wx:for="{{props.store.registerItems}}" class="card">

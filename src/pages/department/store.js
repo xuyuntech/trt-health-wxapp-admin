@@ -34,6 +34,7 @@ class Store {
 				item.id === this.selectedDep1ID));
 			const dep2 = toJS(this.selectedDep2.find((item) =>
 				item.id === this.selectedDep2ID));
+			console.log('selected dep1', dep1, 'dep2', dep2);
 			return {
 				department1: dep1,
 				department2: dep2,

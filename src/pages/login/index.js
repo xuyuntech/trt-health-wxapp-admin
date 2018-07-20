@@ -40,15 +40,32 @@ Page(observer(
 				});
 				console.log('login res', res);
 				const { result } = res;
-				const { id, userId } = result;
+				const { id, userId, role } = result;
 				if (!id || !userId) {
 					return $Toast({content: '登录失败'});
 				}
-				app.setRequestHeaderToStorage({accessToken: id, userID: userId});
-				app.setRequestHeader({accessToken: id, userID: userId});
+				const res1 = await request({
+					url: API.HospitalAdmin.FindByName(username),
+					headers: {
+						'X-Access-Token': id,
+						'X-Access-UserID': userId,
+					},
+				});
+				const userInfo = {
+					...res1.result,
+					role,
+				};
+				const { hospital, creator } = res1.result;
+				if (hospital && creator) {
+					userInfo.creator = creator.split('#')[1];
+					userInfo.hospital = hospital.split('#')[1];
+				}
+				app.setRequestHeaderToStorage({accessToken: id, userID: userId, userInfo});
+				app.setRequestHeader({accessToken: id, userID: userId, userInfo});
 				app.home();
 			}
 			catch (err) {
+				console.error(err);
 				$Toast({content: err.err});
 			}
 		},

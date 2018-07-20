@@ -1,8 +1,10 @@
 $padding: 200rpx;
 $color-primary: #2d8cf0;
 $color-sub: #80848f;
-$color-danger: #ed3f14;
+$color-warning: #ff9900;
 $color-success: #19be6b;
+$color-danger: #ed3f14;
+$color-info: #2d8cf0;
 
 .help-text {
 	text-align: center;
@@ -189,8 +191,17 @@ page {
 	}
 }
 
+.clr-primary{
+	color: $color-primary;
+}
 .clr-warning{
-	color: #ff9900;
+	color: $color-warning;
+}
+.clr-success{
+	color: $color-success;
+}
+.clr-danger{
+	color: $color-danger;
 }
 
 .clr-sub{

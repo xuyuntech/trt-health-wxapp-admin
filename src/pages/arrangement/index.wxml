@@ -44,7 +44,8 @@ module.exports = {
   <view class="whitespace"></view>
   <view class="arrangement-items">
     <view style="text-align: center;color: #999;margin-bottom: 5px;">{{props.store.selectedDate}} 排班信息如下</view>
-    <view  wx:key="{{item.hospital.name}}" wx:for="{{props.store.arrangementHistories}}">
+    <view class="help-text" wx:if="{{props.store.loadMsg}}">{{props.store.loadMsg}}</view>
+    <view wx:key="{{item.hospital.name}}" wx:for="{{props.store.arrangementHistories}}">
         <view class="list">
             <view class="list-title">{{item.hospital.name}}</view>
             <view class="cell cell-access" bindtap="openDetail" data-arrangement-id="{{item.id}}" wx:key="id" wx:for="{{item.arrangementHistories}}">
