@@ -88,7 +88,8 @@
     </view>
     <view class="footer">
         <button bindtap="submit" class="btn btn-primary">保存</button>
-        <button wx:if="{{props.store.registerHistory.state === 'Register'}}" class="btn btn-danger" bindtap="verifyAction">核销</button>
+        <button wx:if="{{props.store.registerHistory.state === 'Init'}}" class="btn" disabled>未支付</button>
+        <button wx:if="{{props.store.registerHistory.state === 'Paid'}}" class="btn btn-danger" bindtap="verifyAction">核销</button>
         <button wx:if="{{props.store.registerHistory.state === 'Visiting'}}" class="btn btn-success" bindtap="finishAction">完成</button>
         <button wx:if="{{props.store.registerHistory.state === 'Finished'}}" class="btn" disabled>已完成</button>
     </view>

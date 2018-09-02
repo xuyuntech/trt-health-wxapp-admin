@@ -13,6 +13,9 @@ Page(observer(
 		getUserInfo(res) {
 			console.log(res);
 		},
+		login() {
+			getApp().login();
+		},
 		logout() {
 			wx.showModal({
 				title: '提示',

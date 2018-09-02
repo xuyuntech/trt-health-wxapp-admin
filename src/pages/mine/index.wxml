@@ -4,9 +4,9 @@
       <view class="avatar-bg" style="background-image:url({{props.store.userInfo.avatar}});"></view>
       <view class="avatar-name">{{props.store.userInfo.name}}</view>
     </view>
-    <view class="avatar-pack" wx:else>
+    <view class="avatar-pack" wx:else bindtap="login">
       <view class="avatar-bg"></view>
-      <view class="avatar-name">未登录</view>
+      <view class="avatar-name">点击登录</view>
     </view>
   </view>
   <view class="whitespace"></view>

@@ -2,8 +2,8 @@ var extendObservable = require('../../libs/mobx').extendObservable;
 
 var TodoStore = function () {
 	extendObservable(this, {
-		username: 'trt-admin',
-		password: 'trt-adminpw',
+		username: '',
+		password: '',
 	});
 
 	// action

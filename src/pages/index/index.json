@@ -1,6 +1,6 @@
 
 {
-  "navigationBarTitleText":"在线智能问诊-管理端",
+  "navigationBarTitleText":"虚云医馆-医生端",
   "usingComponents": {
     "i-grid": "../../iview/grid/index",
     "i-grid-item": "../../iview/grid-item/index",

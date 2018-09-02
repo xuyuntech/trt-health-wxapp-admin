@@ -1,7 +1,7 @@
 <view class="container">
   <view class="title">
-    <view class="fs-large">在线智能问诊</view>
-    <view class="clr-sub" style="margin-top: 10px;">管理端</view>
+    <view class="fs-large">虚云医馆</view>
+    <view class="clr-sub" style="margin-top: 10px;">医生端</view>
   </view>
   <form bindsubmit="submit">
       <view class="form">
